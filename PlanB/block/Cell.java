@@ -75,17 +75,17 @@ public class Cell {
         return Objects.hash(getRow(), getCol(), getImage());
     }
 
-    //左移动一格
+    //左移一格
     public void left(){
         col--;
     }
 
-    //右移动一格
+    //右移一格
     public void right(){
         col++;
     }
 
-    //下移动一格
+    //下移一格
     public void down(){
         row++;
     }
