@@ -4,12 +4,12 @@ import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 /**
- *   方法： 左移、右移、下落
+ *    左移、右移、下落
  */
 public class Cell {
-    // 行
+    
     private int row;
-    // 列
+    
     private int col;
     private BufferedImage image;
 
