@@ -4,11 +4,7 @@ import PlanB.App.Tetris;
 import PlanB.block.Cell;
 import PlanB.block.Tetromino;
 
-/**
- * @author xiaoZhao
- * @date 2022/5/11
- * @describe
- */
+
 public class T extends Tetromino {
     public T() {
         cells[0] = new Cell(0,4, Tetris.T);
