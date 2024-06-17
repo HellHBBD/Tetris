@@ -7,34 +7,34 @@ public class Tetromino {
 
     public PlanB.block.Cell[] cells = new PlanB.block.Cell[4];
 
-    //旋转的状态
+    
     protected State[] states;
-    //声明旋转次数
+    
     protected int count = 10000;
 
 
-    //左移方法
+    //左移
     public void moveLeft() {
         for (PlanB.block.Cell cell : cells) {
             cell.left();
         }
     }
 
-    //右移方法
+    //右移
     public void moveRight() {
         for (PlanB.block.Cell cell : cells) {
             cell.right();
         }
     }
 
-    //单元格下落
+    //下落一格
     public void moveDrop() {
         for (PlanB.block.Cell cell : cells) {
             cell.down();
         }
     }
 
-    //编写随机生成四方格
+    //生成隨機方塊
     public static Tetromino randomOne() {
         int num = (int) (Math.random() * 7);
         Tetromino tetromino = null;
@@ -65,13 +65,12 @@ public class Tetromino {
         return tetromino;
     }
 
-    //顺时针旋转的方法
+    
     public void rotateRight() {
         if (states.length == 0) {
             return;
         }
 
-        //旋转次数+1
         count++;
         State s = states[count % states.length];
         PlanB.block.Cell cell = cells[0];
@@ -85,13 +84,12 @@ public class Tetromino {
         cells[3].setCol(col + s.col3);
     }
 
-    //逆时针旋转的方法
+
     public void rotateLeft() {
         if (states.length == 0) {
             return;
         }
 
-        //旋转次数+1
         count--;
         State s = states[count % states.length];
         PlanB.block.Cell cell = cells[0];
@@ -105,9 +103,9 @@ public class Tetromino {
         cells[3].setCol(col + s.col3);
     }
 
-    //四方格旋转状态的内部类
+    
     protected class State {
-        //存储四方格各元素的位置
+        
         int row0, col0, row1, col1, row2, col2, row3, col3;
 
         public State() {
