@@ -17,23 +17,31 @@ import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Demo extends JPanel {
 	private Tetromino currentOne = Tetromino.random();
     //将要下落的方块
     // private Tetromino nextOne = Tetromino.random();
-	int[] scores_pool = {0, 1, 2, 5, 10};
+	// int[] scores_pool = {0, 1, 2, 5, 10};
     //当前游戏的分数
-    private int totalScore = 0;
+    // private int totalScore = 0;
     //当前消除的行数
-    private int totalLine = 0;
+    // private int totalLine = 0;
 	public static final int PLING = 0;
     public static final int STOP = 1;
     public static final int OVER = 2;
+	private final int delay = 200;
     //当前游戏状态值
     private int game_state;
     //显示游戏状态
     String[] show_state = {"P[pause]", "C[continue]", "S[replay]"};
+	private Timer timer;
+
+	public Demo() {
+		timer = new Timer();
+	}
 
 	@Override
     public void paint(Graphics g) {
@@ -52,7 +60,7 @@ public class Demo extends JPanel {
         // paintState(g);
     }
 
-	public void start() {
+	public void game() {
 		game_state = PLING;
         KeyListener l = new KeyAdapter() {
             @Override
@@ -123,5 +131,14 @@ public class Demo extends JPanel {
             }
             repaint();
         }
+	}
+
+	public void start() {
+		timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+				game();
+            }
+        }, 0, delay);
 	}
 }

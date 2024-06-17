@@ -47,14 +47,22 @@ public class Tetris {
     }
 
     public static void main(String[] args) {
-		JFrame jframe = new JFrame("Tetris");
-		Demo panel = new Demo();
-		jframe.add(panel);
-        jframe.setVisible(true);
-        jframe.setSize(810, 940);
-        jframe.setLocationRelativeTo(null);
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        panel.start();
+		Menu menu = new Menu();
+        menu.start_button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                System.out.println("game start!!!");
+                menu.frame.dispose();
+                JFrame game_frame = new JFrame("NCKU Tetris");
+                game_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				Demo panel = new Demo();
+                GameController gameController = new GameController(game_frame);
+                game_frame.setSize(810, 940);
+                game_frame.add(panel);
+                //game_frame.add(gameController);
+                game_frame.setVisible(true);
+                panel.start();
+            }
+        });
     }
 }
